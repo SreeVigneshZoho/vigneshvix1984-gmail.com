@@ -137,7 +137,7 @@ fs.readFile('./FinalVersion.html', function (err, html) {
                                  toDate = allParams[2];
                                  console.log("to - "+toDate);   
                                 
-                                 con.query('use CliqTimeline',function(err,rows,field) {
+                                 con.query('use sql12329759',function(err,rows,field) {
                                     if(!err) {
                                         console.log("no error in db");
                                     } else {
@@ -279,7 +279,7 @@ fs.readFile('./FinalVersion.html', function (err, html) {
                                 }
                             }
             }
-    }).listen(process.env.PORT || 8080);
+    }).listen(8080);
 
     // console.log(request);
 });

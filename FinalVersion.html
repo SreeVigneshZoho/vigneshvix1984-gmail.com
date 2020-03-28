@@ -272,7 +272,7 @@
 
 			var xhttp = new XMLHttpRequest(); 
          
-        	xhttp.open("POST", "http://localhost:8080?alleventspageload&"+firstDayOfMonthTimeStamp+"&"+lastDayOfMonthTimeStamp, true); 
+        	xhttp.open("POST", "/alleventspageload&"+firstDayOfMonthTimeStamp+"&"+lastDayOfMonthTimeStamp, true); 
         	xhttp.send(); 
 
 
@@ -517,7 +517,7 @@
 
 			var xhttp = new XMLHttpRequest(); 
          
-        	xhttp.open("POST", "http://localhost:8080?alleventspageload&"+firstDayOfMonthTimeStamp+"&"+lastDayOfMonthTimeStamp, true); 
+        	xhttp.open("POST", "/alleventspageload&"+firstDayOfMonthTimeStamp+"&"+lastDayOfMonthTimeStamp, true); 
         	xhttp.send(); 
 
 
@@ -746,7 +746,7 @@
 	 		var parameters = "getAllTags";
 			var xhttp = new XMLHttpRequest(); 
          
-        	xhttp.open("GET", "http://localhost:8080?getAllTags", true); 
+        	xhttp.open("GET", "/getAllTags", true); 
    //      	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			// xhttp.setRequestHeader("Content-length", parameters.length);
 			// xhttp.setRequestHeader("Connection", "close");
@@ -864,7 +864,7 @@
          		//submitting data
          		var xhttp = new XMLHttpRequest(); 
 	         
-	        	xhttp.open("POST", "http://localhost:8080?"+data, true); 
+	        	xhttp.open("POST", '/' + data, true); 
 	        	xhttp.send(data); 
 
 
