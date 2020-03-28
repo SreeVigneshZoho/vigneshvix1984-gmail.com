@@ -279,7 +279,7 @@ fs.readFile('./FinalVersion.html', function (err, html) {
                                 }
                             }
             }
-    }).listen(8080);
+    }).listen(process.env.PORT || 8080);
 
     // console.log(request);
 });
