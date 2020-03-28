@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/SreeVigneshZoho/vigneshvix1984-gmail.com/issues"
   },
-  "homepage": "https://github.com/SreeVigneshZoho/vigneshvix1984-gmail.com#readme"
+  "homepage": "https://github.com/SreeVigneshZoho/vigneshvix1984-gmail.com#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
 }

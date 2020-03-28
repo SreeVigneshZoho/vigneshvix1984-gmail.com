@@ -3,10 +3,7 @@ const mysql = require('mysql');
 console.log("My SQL data print");
 console.log(mysql);
 
-//Content disposition
-const contentDisposition = require('content-disposition');
-console.log("Content Disposition");
-console.log(contentDisposition);
+
 //Show HTML
 
 var fs = require('fs');
@@ -33,9 +30,10 @@ fs.readFile('./FinalVersion.html', function (err, html) {
                         //Create sql connection here.
                         
                         con = mysql.createConnection({
-                            host: 'localhost',
-                            user: 'root',
-                            password: 'Crisno#1985'
+                            host: 'sql12.freemysqlhosting.net',
+                            port: 3306,
+                            user: 'sql12329759',
+                            password: 'GBkYyJIfyg'
                           });
 
                         //Fetch tagname and color here
@@ -44,7 +42,7 @@ fs.readFile('./FinalVersion.html', function (err, html) {
                             {
                             console.log("printing db resp");
       
-                            con.query('use CliqTimeline',function(err,rows,field) {
+                            con.query('use sql12329759',function(err,rows,field) {
                                 if(!err) {
                                     console.log("no error in db");
                                 } else {
@@ -85,7 +83,7 @@ fs.readFile('./FinalVersion.html', function (err, html) {
                                 {
                                 console.log("Event form submission");
                                 
-                                con.query('use CliqTimeline',function(err,rows,field) {
+                                con.query('use sql12329759',function(err,rows,field) {
                                     if(!err) {
                                         console.log("no error in db");
                                     } else {
@@ -231,7 +229,7 @@ fs.readFile('./FinalVersion.html', function (err, html) {
                             else if(params.includes("eventdetailsupdate"))
                                 {
                                         console.log("updating the events");
-                                        con.query('use CliqTimeline',function(err,rows,field) {
+                                        con.query('use sql12329759',function(err,rows,field) {
                                             if(!err) {
                                                 console.log("no error in db");
                                             } else {
