@@ -1,0 +1,891 @@
+<html>
+<head>
+	<style type="text/css">
+
+		.header {
+			height: 30%;
+			line-height: 560%;
+ 			font-size: 40px;
+ 			/*text-align: center;*/
+ 			width: 55%;
+ 			margin-left: 9%;
+ 			vertical-align: middle;
+ 			font-family: "PT Sans", sans-serif;
+ 			display: inline-block;
+			position: sticky;
+ /*			border : 2px solid gray;*/
+		}
+
+		.buttonContainer {
+			width: 20%;
+	/*		border: 1px solid gray;*/
+			padding-left: 10%;
+			display: inline-block;
+			height: 15%;
+			position: sticky;
+		}
+		.buttons {
+			height: 35%;
+ 			width: 40%;
+ 			margin-right: 15px;
+ 			border-radius: 3px;
+ 			font-family: "PT Sans", sans-serif;
+ 			font-weight: bold;
+ 			font-size: 13px;
+ 			outline:none; 
+		}
+
+		.buttons:hover {
+			box-shadow: 2px 2px 6px gray;
+			cursor: grab;
+			width: 41%;
+			height: 36%;
+		}
+
+		.cardContainer {
+			width: 88%;
+			margin: auto;		
+			overflow: scroll;
+		}
+
+		.card {
+			width: 18%;
+			height: 38%;
+			/*border: 2px solid gray;*/
+			box-shadow: 1px 4px 6px gray;
+			margin: 3%;
+			/*background-color: blue;*/
+			display: inline-block;
+			border-radius: 7px;
+		}
+
+		.card:hover {
+			box-shadow: 5px 5px 10px black;
+			cursor: grab;
+			width: 22%
+			height:37%;
+		}
+
+		.dateOfCard {
+			width: 94%;
+			border-radius: 7px;
+			height: 15%;
+/*			border: 0.1px solid gray;*/
+			font-size: 14px;
+ 			font-family: "PT Sans", sans-serif;
+ 			font-weight: bold;
+ 			padding-left: 6%;
+ 			padding-top: 6%;
+		}
+
+		.dateOfCard:hover {
+			background-color: #f2f0f0;
+		}
+
+		.tagOfCard {
+			width: 100%;
+			height: 15%;
+			/*border: 0.1px solid gray;*/
+			font-size: 12px;
+ 			font-family: "PT Sans", sans-serif;
+ 			padding-left: 6%;
+ 			padding-top: 2%;
+
+		}
+
+		.contentOfCard {
+			width: 85%;
+			height: 60%;
+			margin-bottom: 5%;
+			padding-left: 6%;
+			padding-right: 8%;
+			font-family: "PT Sans", sans-serif;
+			font-size: 14px;
+			line-height: 28px;
+			overflow: scroll;
+			/*border: 0.1px solid gray;*/
+		}
+
+		.tag {
+			height: 45%;
+			font-size: 12px;
+			display: inline-block;
+			border-radius: 3px;
+			/* border: 1px solid orange; */
+			background: Tomato;
+			padding-top: 2%;
+			padding-right: 2%;
+			padding-left: 2%;
+			opacity: 0.5;
+			text-align: left;
+		}
+
+		.overlay {
+			position: fixed;
+		    width: 100%;
+		    height: 100%;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		    background-color: rgba(0,0,0,0.5);
+		    z-index: 2;
+		}
+
+		.close {
+
+			text-align: center;
+			font-size: 23px;
+			color: gray;
+			margin-left: 67%;
+			/*padding-top: 5%;*/
+			margin-top: 5%;
+			margin-bottom: 1%;
+			border-radius: 50%;
+		}
+
+		.close:hover {
+			cursor: grab;
+		}
+
+		.dialog {
+			margin: auto;
+			/*margin-top:10%; */
+			width: 40%;
+			height: 50%;
+			background-color: white;
+			border-radius: 5px;
+			z-index: 10;
+		}
+
+		.dialogHeader {
+			/*border : 1px solid gray;*/
+			font-size: 25px;
+			line-height: 400%;
+			font-family: "PT Sans", sans-serif;
+			/*padding-left: 4%;*/
+			text-align: center;
+		}
+
+		.label {
+			font-size: 14px;
+			color: black;	
+			font-family: "PT Sans", sans-serif;
+			opacity: 0.6;
+			margin-left: 35px;
+			margin-bottom: 6px;
+		}
+
+		.textField {
+			width: 85%;
+			margin-left: 35px;
+			height: 40px;
+			border-radius: 3px;
+			padding-left: 10px;
+			border : 2px solid black;
+			background-color: inherit;
+			color: black;
+			font-size: 10px;
+			overflow: scroll;
+		}
+
+		input[type=submit] {
+			  background-color: #ffffff;
+			  color: black;
+			  border : 2px solid black;
+			  border-radius: 4px;
+			  cursor: pointer;
+			  float: right;
+			  margin-right: 8%;
+			  width: 20%;
+			  height: 40px;
+			  font-size: 12px;
+			  font-family: "PT Sans", sans-serif;
+			}
+
+		input[type=submit]:hover {
+			  width: 21%;
+			  height: 42px;	
+			  box-shadow: 1px 1px 3px gray;
+			 } 
+
+		.spaceBetweenFormElements {
+			height: 40px;
+		}
+
+		.monthPicker {
+			height : 5%;
+			width:43%;
+			margin:auto;
+			border: 1px solid #d4d4d4;
+			border-radius: 4px;
+		}
+
+		.monthPickerButton {
+			/*border: 1px solid gray;
+			width: 7%;
+			height: 100%;
+			vertical-align: middle;
+			line-height: 240%;*/
+			display: inline-block;
+			height: 83%;
+			padding: 10px;
+			margin-top:0.6%;
+			margin-left: 0.3%;   
+ 			width: 8%;
+ 			/*margin-right: 15px;*/
+ 			border-radius: 3px;
+ 			border: 0.4px solid #d4d4d4;
+ 			font-family: "PT Sans", sans-serif;
+ 			font-weight: bold;
+ 			font-size: 11px;
+ 			outline:none; 
+		}
+
+		.monthPickerButton:hover {
+			/*box-shadow: 2px 2px 6px gray;*/
+			cursor: grab;
+			background-color: #f2f0f0;
+		}
+
+	</style>
+	
+</head>
+<body id="pageBody">
+	<div id = "pageHeader" class="header">Zoho Cliq TimeLine - 2020</div>
+	<div id = "buttonContainer" class="buttonContainer"></div>
+	<div id= "monthPicker" class="monthPicker"></div>
+	<div id= "cardContainer" class="cardContainer"></div>
+	<script>
+		function pageLoad() {
+
+			var currentDate = new Date();
+			var currentYear = currentDate.getFullYear();
+
+			firstDayOfMonth = "2020-01-01"; 
+			lastDayOfMonth = "2020-01-31";
+
+			firstDayOfMonthTimeStamp = new Date(firstDayOfMonth).getTime() - 1;
+			lastDayOfMonthTimeStamp = new Date(lastDayOfMonth).getTime() + 1;
+			console.log("first day val = "+firstDayOfMonthTimeStamp);
+			console.log("last day val = "+lastDayOfMonthTimeStamp);
+
+			var xhttp = new XMLHttpRequest(); 
+         
+        	xhttp.open("POST", "http://localhost:8080?alleventspageload&"+firstDayOfMonthTimeStamp+"&"+lastDayOfMonthTimeStamp, true); 
+        	xhttp.send(); 
+
+
+        	xhttp.onreadystatechange = function() { 
+				if (this.readyState == 4)
+        		{
+        			response = xhttp.responseText;
+					console.log(response);
+
+					var div = document.getElementById("cardContainer");
+					if(response=="Nomatch")
+					{
+						div.setAttribute("style","padding-top:13%;text-align:center;");
+						div.innerHTML = "No events added for this month yet!";
+					}
+					else
+					{	
+
+					div.removeAttribute("style");
+					allEvents = response.split(",");
+					console.log(allEvents.length);
+
+					allTimeStamps = [];
+
+
+					for (event of allEvents)
+						{
+							details = event.split(" ~ ");
+							eventDateInyyyy = details[0];
+							console.log(eventDate);
+							eventDescription = details[1];
+							eventTag = details[2];
+							timeStamp = details[3];
+							tagColor = details[4];
+							id = details[5];
+							
+							allTimeStamps.push(timeStamp);
+
+							var eventDate = new Date(eventDateInyyyy);
+							eventDate = eventDate.toDateString();
+							console.log("date of event = "+eventDate);
+
+							
+
+							var card = document.createElement("div");
+							card.setAttribute("class","card");
+							card.setAttribute("id",eventDate);
+							var div = document.getElementById("cardContainer");
+							div.appendChild(card);
+
+							var dateOfCard = document.createElement("div");
+							dateOfCard.setAttribute("class","dateOfCard");
+							dateOfCard.setAttribute("dateinyyyy",eventDateInyyyy);
+							dateOfCard.setAttribute("id",id);
+							card.appendChild(dateOfCard);
+
+							dateOfCard.innerHTML = eventDate;
+							dateOfCard.onclick = createEvent;
+
+							var contentOfCard = document.createElement("div");
+							contentOfCard.setAttribute("class","contentOfCard");
+							contentOfCard.setAttribute("id","content - "+id);
+							card.appendChild(contentOfCard);
+
+							contentOfCard.innerHTML = eventDescription;
+
+
+							var tagSection = document.createElement("div");
+							tagSection.setAttribute("class","tagOfCard");
+							card.appendChild(tagSection);
+
+							var tag = document.createElement("div");
+							tag.setAttribute("class","tag");
+							tag.setAttribute("id","tag - "+id);
+							tagSection.appendChild(tag);
+							tag.innerHTML=eventTag;
+							tag.style.backgroundColor = tagColor;
+						}
+					}
+					
+						var buttonDiv = document.getElementById("buttonContainer");
+
+						var eventButton = document.createElement("button");
+						eventButton.setAttribute("type","button");
+						eventButton.setAttribute("class","buttons");
+						eventButton.setAttribute("id","eventCreation");
+						buttonDiv.appendChild(eventButton);
+						eventButton.innerHTML = "Create Event";
+						//eventButton.onclick = function() {createEvent()};
+						eventButton.onclick = createEvent;
+
+						months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+						monthButtonContainer = document.getElementById("monthPicker");
+						for (month of months)
+							{
+								var monthButton = document.createElement("button");
+								monthButton.setAttribute("type","button");
+								monthButton.setAttribute("class","monthPickerButton");
+								monthButton.setAttribute("id",month);
+								if(month=="Jan")
+								{
+									monthButton.setAttribute("currentmonth","true");
+									monthButton.setAttribute("style","background-color:#f2f0f0");
+								}
+								else
+								{
+									monthButton.setAttribute("currentmonth","false");
+								}
+
+								monthButton.onclick = loadEvents;
+								monthButtonContainer.appendChild(monthButton);
+								monthButton.innerHTML = month;
+								//monthButton.onclick = function() {loadEvents(event)};
+							}				
+
+					}
+			//Remove add event div
+			
+
+         	};
+		}
+
+		function loadEvents(event) {
+			console.log("test");
+			// var cardContainer = document.getElementById("cardContainer");
+			// cardContainer.remove();
+
+			// var pageBody = document.getElementById("pageBody");
+			// var cardContainer = document.createElement("div");
+			// cardContainer.setAttribute("id","cardContainer");
+			// cardContainer.setAttribute("class","cardContainer");
+			// pageBody.appendChild(cardContainer);
+
+
+			var allMonths = document.getElementsByClassName("monthPickerButton");
+			console.log(allMonths.length);
+
+			for(var i=0; i<allMonths.length; i++)
+			{
+				console.log(month);
+				previousSelection = allMonths[i].getAttribute("currentmonth");
+				if(previousSelection=="true")
+				{
+					console.log(allMonths[i].getAttribute("id"));
+					allMonths[i].setAttribute("currentmonth","false");
+					allMonths[i].removeAttribute("style");
+				}
+			}
+
+			var currentElement = event.currentTarget;
+			newMonth = currentElement.id;
+			currentlyExecuting = document.getElementById(newMonth);
+			console.log(currentlyExecuting);
+			currentlyExecuting.setAttribute("currentmonth","true");
+			currentlyExecuting.setAttribute("style","background-color:#f2f0f0");
+			console.log(currentlyExecuting);
+			console.log("month : "+newMonth);
+
+			//Get all data and load data here
+
+			var currentDate = new Date();
+			var currentYear = currentDate.getFullYear();
+
+			fromDate = "01";
+			if(newMonth=="Jan")
+			{
+				//yyyy-mm-dd
+				//new Date(date).getTime();
+				monthNumber = "01";
+				toDate = "31";
+			}
+			else if(newMonth=="Feb")
+			{
+				if(currentYear%4==0)
+				{
+					toDate = "29";	
+				}
+				else
+				{
+					toDate = "28";
+				}
+				monthNumber = "02";
+			}
+			else if(newMonth=="Mar")
+			{
+				toDate = "31";
+				monthNumber = "03";
+			}
+			else if(newMonth=="Apr")
+			{
+				toDate = "30";
+				monthNumber = "04";
+			}
+			else if(newMonth=="May")
+			{
+				toDate = "31";
+				monthNumber = "05";
+			}
+			else if(newMonth=="Jun")
+			{
+				toDate = "30";
+				monthNumber = "06";
+			}
+			else if(newMonth=="Jul")
+			{
+				toDate = "31";
+				monthNumber = "07";
+			}
+			else if(newMonth=="Aug")
+			{
+				toDate = "31";
+				monthNumber = "08";
+			}
+			else if(newMonth=="Sep")
+			{
+				toDate = "30";
+				monthNumber = "09";
+			}
+			else if(newMonth=="Oct")
+			{
+				toDate = "31";
+				monthNumber = "10";
+			}
+			else if(newMonth=="Nov")
+			{
+				toDate = "30";
+				monthNumber = "11";
+			}
+			else if(newMonth=="Dec")
+			{
+				toDate = "31";
+				monthNumber = "12";
+			}
+
+			firstDayOfMonth = currentYear+"-"+monthNumber+"-"+fromDate; 
+			lastDayOfMonth = currentYear+"-"+monthNumber+"-"+toDate;
+
+			firstDayOfMonthTimeStamp = new Date(firstDayOfMonth).getTime();
+			lastDayOfMonthTimeStamp = new Date(lastDayOfMonth).getTime();
+			console.log("first day val = "+firstDayOfMonthTimeStamp);
+			console.log("last day val = "+lastDayOfMonthTimeStamp);
+
+			var xhttp = new XMLHttpRequest(); 
+         
+        	xhttp.open("POST", "http://localhost:8080?alleventspageload&"+firstDayOfMonthTimeStamp+"&"+lastDayOfMonthTimeStamp, true); 
+        	xhttp.send(); 
+
+
+        	xhttp.onreadystatechange = function() { 
+				if (this.readyState == 4)
+        		{
+        			response = xhttp.responseText;
+					console.log("load events = "+response);
+
+					if(response=="Nomatch")
+					{
+						var div = document.getElementById("cardContainer");
+						div.setAttribute("style","padding-top:13%;text-align:center;");
+						div.innerHTML = "No events added for this month yet!";
+					}
+					else
+					{
+					var cardContainer = document.getElementById("cardContainer");
+					cardContainer.remove();
+
+					var pageBody = document.getElementById("pageBody");
+					var cardContainer = document.createElement("div");
+					cardContainer.setAttribute("id","cardContainer");
+					cardContainer.setAttribute("class","cardContainer");
+					pageBody.appendChild(cardContainer);
+
+					allEvents = response.split(",");
+					console.log(allEvents.length);
+
+					allTimeStamps = [];
+
+					for (event of allEvents)
+						{
+							details = event.split(" ~ ");
+							eventDateInyyyy = details[0];
+
+							console.log(eventDate);
+							eventDescription = details[1];
+							eventTag = details[2];
+							timeStamp = details[3];
+							tagColor = details[4];
+							id = details[5];
+							
+							allTimeStamps.push(timeStamp);
+
+
+							var eventDate = new Date(eventDateInyyyy);
+							eventDate = eventDate.toDateString();
+							console.log("date of event = "+eventDate);
+
+							
+
+							var card = document.createElement("div");
+							card.setAttribute("class","card");
+							card.setAttribute("id",eventDate);
+							var div = document.getElementById("cardContainer");
+							div.appendChild(card);
+
+							var dateOfCard = document.createElement("div");
+							dateOfCard.setAttribute("class","dateOfCard");
+							dateOfCard.setAttribute("dateinyyyy",eventDateInyyyy);
+							dateOfCard.setAttribute("id",id);
+							card.appendChild(dateOfCard);
+
+							dateOfCard.innerHTML = eventDate;
+
+							dateOfCard.onclick = createEvent;
+
+							var contentOfCard = document.createElement("div");
+							contentOfCard.setAttribute("class","contentOfCard");
+							contentOfCard.setAttribute("id","content - "+id);
+							card.appendChild(contentOfCard);
+
+							contentOfCard.innerHTML = eventDescription;
+
+
+							var tagSection = document.createElement("div");
+							tagSection.setAttribute("class","tagOfCard");
+							card.appendChild(tagSection);
+
+							var tag = document.createElement("div");
+							tag.setAttribute("class","tag");
+							tag.setAttribute("id","tag - "+id);
+							tagSection.appendChild(tag);
+							tag.innerHTML=eventTag;
+							tag.style.backgroundColor = tagColor;
+						}
+					}
+				}	
+
+			//Remove add event div
+			
+
+         	};
+		}
+
+
+		// function editEvent(event) {
+		// 	//set card id as the id of submit event
+		// 	console.log("edit event");
+		// 	targetElement = event.currentTarget;
+		// 	console.log(event.currentTarget);
+		// 	idOfElementBeingEdited = targetElement.id;
+		// 	console.log("id of element : "+idOfElementBeingEdited);
+
+		// }
+
+		// function submitEditedEvent(event) {
+		// 	console.log("submit updated details");
+		// }
+
+
+
+		function createEvent(event) {
+
+			targetElement = event.currentTarget;
+			idofTargetElement = targetElement.id;
+			console.log("return form : "+idofTargetElement);
+
+			var pageBody = document.getElementById("pageBody");
+
+			var overlay = document.createElement("div");
+			overlay.setAttribute("id","overlay");
+			overlay.setAttribute("class","overlay");
+			pageBody.appendChild(overlay);
+
+			var closeIcon = document.createElement("button");
+			closeIcon.setAttribute("type","button");
+			closeIcon.setAttribute("class","close");
+			closeIcon.setAttribute("id","close");
+			overlay.appendChild(closeIcon);
+			closeIcon.innerHTML = "X";
+
+			closeIcon.onclick = function() {close()};
+
+
+			var dialog = document.createElement("div");
+			dialog.setAttribute("class","dialog");
+			dialog.setAttribute("id","dialog");
+			overlay.appendChild(dialog);
+
+
+			//Header on dialog
+			var header = document.createElement("div");
+			header.setAttribute("class","dialogHeader");
+			dialog.appendChild(header);
+			dialog.style = "height:73%";
+			header.innerHTML = "Add Event";
+
+			// header.onclick = function() {close()};
+
+			//Form Element
+			var form = document.createElement("form");
+ 			form.setAttribute("id","eventForm");
+ 			form.setAttribute("action",idofTargetElement);
+ 			dialog.appendChild(form);
+
+ 			//First Label Div
+	 		descriptionLabel = document.createElement("div");
+	 		descriptionLabel.setAttribute("class","label");
+	 		descriptionLabel.setAttribute("id","label1");
+	 		form.appendChild(descriptionLabel);
+
+	 		descriptionLabel.innerHTML = "Description";
+
+	 		//Add first field
+	 		descriptionInput = document.createElement("input");
+	 		descriptionInput.setAttribute("type","text");
+	 		descriptionInput.setAttribute("class","textField");
+	 		descriptionInput.setAttribute("name","description");
+	 		descriptionInput.setAttribute("placeholder","Describe the stuff to do..");
+	 		descriptionInput.setAttribute("id","descriptionInput");
+	 		form.appendChild(descriptionInput);
+
+	 		descriptionInput.style = "height:20%";
+
+	 		//Insert space betweem labels
+	 		space = document.createElement("div");
+	 		space.setAttribute("class","spaceBetweenFormElements");
+	 		space.setAttribute("id","1");
+	 		form.appendChild(space);
+
+	 		//Date label
+	 		dateLabel = document.createElement("div");
+	 		dateLabel.setAttribute("class","label");
+	 		dateLabel.setAttribute("id","label1");
+	 		form.appendChild(dateLabel);
+
+	 		dateLabel.innerHTML = "Date (dd/MM/yyyy)";
+
+	 		//Date Field (Text field for now) (Replace with calendar later)
+	 		dateInput = document.createElement("input");
+	 		dateInput.setAttribute("type","date");
+	 		dateInput.setAttribute("class","textField");
+	 		dateInput.setAttribute("name","Date");
+	 		dateInput.setAttribute("value", "2020-02-28");
+	 		dateInput.setAttribute("id","dateInput");
+	 		form.appendChild(dateInput);
+
+	 		//Space between date input field and submit button
+		 	space = document.createElement("div");
+	 		space.setAttribute("class","spaceBetweenFormElements");
+	 		space.setAttribute("id","2");
+	 		form.appendChild(space);
+
+
+	 		//Attach a tag
+	 		//Second Label
+	 		tagLabel = document.createElement("div");
+	 		tagLabel.setAttribute("class","label");
+	 		tagLabel.setAttribute("id","label3");
+	 		form.appendChild(tagLabel);
+
+	 		tagLabel.innerHTML = "Attach Tag";
+
+	 		//Second Input and corresponding values
+	 		selectColor = document.createElement("select");
+	 		selectColor.setAttribute("class","textField");
+	 		selectColor.setAttribute("name","color");
+	 		selectColor.setAttribute("id","tag");
+	 		form.appendChild(selectColor);
+
+
+	 		//Make request here, get response and populate tags
+
+	 		var parameters = "getAllTags";
+			var xhttp = new XMLHttpRequest(); 
+         
+        	xhttp.open("GET", "http://localhost:8080?getAllTags", true); 
+   //      	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			// xhttp.setRequestHeader("Content-length", parameters.length);
+			// xhttp.setRequestHeader("Connection", "close");
+
+        	xhttp.send(parameters); 
+
+        	xhttp.onreadystatechange = function() { 
+
+        	if (this.readyState == 4)
+        		{
+					allowedColors = [];
+					response = xhttp.responseText;
+					
+					responseList = response.split(",");
+					
+					var element;
+		
+					for (element of responseList) {
+					elementList = element.split("-");
+					console.log(elementList);
+					allowedColors.push(elementList[0].trim());
+					}
+					//Split response text into tagname and color. Pass tagnames as an array.
+					for(i=0;i<allowedColors.length;i++)
+					{
+						console.log(allowedColors[i]);
+						options = document.createElement("option");
+						options.setAttribute("value",allowedColors[i]);
+						options.setAttribute("id",allowedColors[i]);
+						selectColor.appendChild(options);
+
+						options.innerHTML = allowedColors[i];
+					}
+
+
+					//Space between elements
+					space = document.createElement("div");
+					space.setAttribute("class","spaceBetweenFormElements");
+					space.setAttribute("id","3");
+					form.appendChild(space);
+
+					//Appending submit button to form
+
+					submitButton = document.createElement("input");
+					submitButton.setAttribute("type","submit");
+					submitButton.setAttribute("value","Add Event");
+					submitButton.setAttribute("id","submitButton");
+					form.appendChild(submitButton);	
+
+					form.onsubmit = eventSubmit;
+
+					//inner html if it is not event creation
+					if(idofTargetElement!="eventCreation")
+						{
+							//fetch values from client and append to the form here
+							console.log("inside if");
+							dateToPopulate = document.getElementById(idofTargetElement).getAttribute("dateinyyyy");
+							console.log("date - "+dateToPopulate);
+							dateInput.setAttribute("value",dateToPopulate);
+
+
+							contentToPopulate = document.getElementById("content - "+idofTargetElement).innerHTML;
+							console.log("content - "+contentToPopulate);
+							descriptionInput.setAttribute("value",contentToPopulate);
+
+							tagToPopulate = document.getElementById("tag - "+idofTargetElement).innerHTML;
+							console.log(tagToPopulate);
+							document.getElementById("tag").value = tagToPopulate;
+
+							console.log(allowedColors.includes(tagToPopulate));
+
+							header.innerHTML = "Update Event";
+
+							submitButton.setAttribute("value","Update Event");
+						}
+        		}
+
+         	};
+		}
+
+		function close() {
+			var overlay = document.getElementById("overlay");
+			overlay.remove();
+		}
+
+		function eventSubmit(event) {
+			event.preventDefault();
+
+			targetElement = event.currentTarget;
+			console.log(targetElement);
+			action = targetElement.action;
+			//action = action.replace("")
+			console.log("action : "+ action);
+
+			var description = document.getElementById("descriptionInput").value;
+			var date = document.getElementById("dateInput").value;
+			var tagName = document.getElementById("tag").value;
+
+
+			if(action.includes("eventCreation"))
+			{
+
+				var data = "deseven&"+description +"&"+date+"&"+tagName;
+         	}
+         	else
+         	{
+         		console.log("event update");
+         		action = action.split("/")[3];
+         		var data = "eventdetailsupdate&"+description +"&"+date+"&"+tagName+"&"+action;
+         		console.log(data);
+
+         		//update data
+         	}
+
+         		//submitting data
+         		var xhttp = new XMLHttpRequest(); 
+	         
+	        	xhttp.open("POST", "http://localhost:8080?"+data, true); 
+	        	xhttp.send(data); 
+
+
+	        	xhttp.onreadystatechange = function() { 
+					if (this.readyState == 4)
+	        		{
+	        			response = xhttp.responseText;
+						console.log(response);
+
+	        		//Remove overlay
+	        			var overlay = document.getElementById("overlay");
+						overlay.remove();
+						console.log("overlay");
+					}	
+	         	};
+
+
+		}
+
+		pageLoad();
+
+	</script>
+</body>
+</html>
