@@ -278,6 +278,7 @@ fs.readFile('./FinalVersion.html', function (err, html) {
                                 response.end();  
                                 }
                             }
+                        con.end();
             }
     }).listen(process.env.PORT || 8080);
 
