@@ -29,6 +29,9 @@
     "type": "git",
     "url": "https://github.com/hiddentao/fast-levenshtein.git"
   },
+  "engines": {
+    "node": "12.16.x"
+  },
   "keywords": [
     "levenshtein",
     "distance",
